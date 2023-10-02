@@ -10,11 +10,7 @@ public class ActionCounter {
     }
 
     public void call(int timestamp) {
-        Integer value = callCounter.put(timestamp,1);
-        if (value != null){
-            callCounter.put(timestamp, value + 1);
-        }
-        System.out.println("new put = " + callCounter.get(timestamp));
+        callCounter.put(timestamp, callCounter.getOrDefault(timestamp, 0) + 1);
     }
 
     public int getActions(int timestamp) {
