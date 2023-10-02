@@ -10,7 +10,7 @@ public class ActionCounter {
     }
 
     public void call(int timestamp) {
-        callCounter.put(timestamp, callCounter.getOrDefault(timestamp, 0) + 1);
+        callCounter.merge(timestamp, 1, Integer::sum);
     }
 
     public int getActions(int timestamp) {
